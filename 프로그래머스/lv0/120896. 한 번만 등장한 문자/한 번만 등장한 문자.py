@@ -1,3 +1,3 @@
 def solution(s):
-    return ''.join(sorted([ x for x in list(s) if list(s).count(x) == 1]))
+    return ''.join(sorted([ x for x in set(s) if s.count(x) == 1]))
      
