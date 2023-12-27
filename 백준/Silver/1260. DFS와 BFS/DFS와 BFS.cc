@@ -13,9 +13,10 @@ void dfs(int v) {
   visited[v] = true;
   cout << v << " ";         //방문할때마다 출력
   for (int i = 0; i < graph[v].size(); i++) {
-    int next = graph[v][i]; //지금 정점에서 방문할 노드를 next에 대입
-    if (!visited[next])     // next가 false라면
+    if (visited[graph[v][i]] == false){     // next가 false라면
+      int next = graph[v][i]; //지금 정점에서 방문할 노드를 next에 대입
       dfs(next);            //재귀
+    }
   }
 }
 
@@ -28,10 +29,9 @@ void bfs(int v) {
     q.pop();                 //큐의 맨 앞 제거
     cout << current << " ";  // 방문처리하면서 출력
     for (int i = 0; i < graph[current].size(); i++) {
-      int next = graph[current][i]; //현재 정점과 연결된 가장 가까운 정점이
-      if (!visited[next]) {   //방문된적 없으면
-        visited[next] = true; //방문처리 후
-        q.push(next);         //다음 방문지(cur)로 지정
+      if (!visited[graph[current][i]]) {   //방문된적 없으면
+        visited[graph[current][i]] = true; //방문처리 후
+        q.push(graph[current][i]);         //다음 방문지(cur)로 지정
       }
     }
   }
